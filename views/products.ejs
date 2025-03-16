@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="styles/products.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/header', { activePage: 'products' }); %>
+    <main>
+        <section class="container hero">
+            <div class="hero__bg-wrapper">
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <img class="hero__bg-img" src="/img/banner-products.png">
+            </div>
+            <div class="hero__content">
+                <h1 class="hidden" aria-hidden="true">Good vibes</h1>
+                <p class="hero__title">Наши работы</p>
+                <p class="hero__text hero__text">Предлагаем вам ознакомиться с нашими работами для вдохновения и поиска новых путей развития вашего бизнеса. Каждый проект — новая возможность для нас превзойти себя и воплотить ваши мечты в реальность.</p>
+            </div>
+        </section>
+        <section class="container subnavigation">
+            <a href="#neon" class="button-secondary button_small subnavigation__link">Неоновые вывески</a>
+            <a href="#letters" class="button-secondary button_small subnavigation__link">Объемные буквы</a>
+            <a href="#cubes" class="button-secondary button_small subnavigation__link">Световые кубы</a>
+            <a href="#tables" class="button-secondary button_small subnavigation__link">Таблички</a>
+            <a href="#print" class="button-secondary button_small subnavigation__link">Печать</a>
+            <a href="#uncommon" class="button-secondary button_small subnavigation__link">Нестандартные изделия</a>
+        </section>
+        <% if (data.neon && data.neon.products.length > 0) { %>
+            <section id="neon" class="container">
+                <h2 class="section-title"><%= data.neon.name %></h2>
+                <div class="product">
+                    <% data.neon.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+        <% if (data.letters && data.letters.products.length > 0) { %>
+            <section id="letters" class="container">
+                <h2 class="section-title"><%= data.letters.name %></h2>
+                <div class="product">
+                    <% data.letters.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+        <% if (data.cubes && data.cubes.products.length > 0) { %>
+            <section id="cubes" class="container">
+                <h2 class="section-title"><%= data.cubes.name %></h2>
+                <div class="product">
+                    <% data.cubes.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+        <% if (data.tables && data.tables.products.length > 0) { %>
+            <section id="tables" class="container">
+                <h2 class="section-title"><%= data.tables.name %></h2>
+                <div class="product">
+                    <% data.tables.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+        <% if (data.print && data.print.products.length > 0) { %>
+            <section id="print" class="container">
+                <h2 class="section-title"><%= data.print.name %></h2>
+                <div class="product">
+                    <% data.print.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+        <% if (data.uncommon && data.uncommon.products.length > 0) { %>
+            <section id="uncommon" class="container">
+                <h2 class="section-title"><%= data.uncommon.name %></h2>
+                <div class="product">
+                    <% data.uncommon.products.forEach(function(item, index){ %>
+                        <article class="product__card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <p class="product__description"><%= item.description %></p>
+                            <p class="product__price"><%= item.price %> ₽</p>
+                        </article>
+                    <% }); %>
+                </div>
+            </section>
+        <% }; %>
+    </main>
+    <%- include('partials/footer'); %>
+</body>
+</html>

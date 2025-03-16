@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('../../partials/head'); %>
+    <link rel="stylesheet" href="/styles/products.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <title>Админка</title>
+</head>
+<body>
+    <%- include('../../partials/admin-header', { activePage: 'products' }); %>
+    <main>
+        <section class="container">
+            <form class="admin__form">
+                <% if (data.id) { %>
+                    <h3 class="admin__form-title">Редактировать изделие</h3>
+                <% } else { %>
+                    <h3 class="admin__form-title">Новое изделие</h3>
+                <% }; %>
+                <input
+                    class="form__text-field"
+                    type="text"
+                    name="description"
+                    id="description"
+                    placeholder="Описание* (Допустимы буквы, цифры, пробелы и знаки препинания :.,;)"
+                    autocomplete="off"
+                    maxlength="1000"
+                    required
+                    pattern="[А-Яа-яA-Za-z0-9\s:.,;]+"
+                    value="<%= data.description %>"
+                >
+                <input
+                    class="form__text-field"
+                    type="text"
+                    name="price"
+                    id="price"
+                    placeholder="Цена* (Число от 0 до 999 999)"
+                    autocomplete="off"
+                    required
+                    pattern="[0-9]{1,6}"
+                    value="<%= data.price %>"
+                >
+                <label class="admin__form-file link">
+                    Добавить изображение
+                    <svg class="admin__form-file-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <g id="File / Download_Package">
+                                <path id="Vector" d="M4 8V16.8C4 17.9201 4 18.4798 4.21799 18.9076C4.40973 19.2839 4.71547 19.5905 5.0918 19.7822C5.5192 20 6.07899 20 7.19691 20H16.8031C17.921 20 18.48 20 18.9074 19.7822C19.2837 19.5905 19.5905 19.2839 19.7822 18.9076C20 18.4802 20 17.921 20 16.8031V8M4 8H20M4 8L5.36518 5.61089C5.7002 5.0246 5.86768 4.73151 6.10325 4.51807C6.31184 4.32907 6.55859 4.18605 6.82617 4.09871C7.12861 4 7.46623 4 8.14258 4H15.8571C16.5334 4 16.8723 4 17.1747 4.09871C17.4423 4.18605 17.6879 4.32907 17.8965 4.51807C18.1322 4.73168 18.3002 5.02507 18.6357 5.6123L20 8M12 11V17M12 17L15 15M12 17L9 15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            </g>
+                        </g>
+                    </svg>
+                    <input
+                        type="file"
+                        name="images"
+                        id="images"
+                        multiple
+                        accept=".png,.jpg,.jpeg"
+                    >
+                </label>
+                <div class="admin__form-file-group"></div>
+                <div class="admin__button-group">
+                    <button type="button" class="button-secondary admin__form-cancel">Отмена</button>
+                    <button type="submit" class="button-primary admin__form-button">Сохранить</button>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="https://unpkg.com/cropperjs"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const typeId = '<%= data.typeId %>';
+            const id = '<%= data.id %>';
+            const data = id ? JSON.parse('<%- data.json %>') : {};
+            let images = data.images?.map(({ content }) => content) ?? [];
+            const formElement = document.querySelector('.admin__form');
+            const cardList = document.querySelector('.admin__card-list');
+            const fileInput = document.querySelector('#images');
+            const dropZone = document.querySelector('.admin__form-file');
+            const fileGroup = document.querySelector('.admin__form-file-group');
+            const cancelBtn = document.querySelector('.admin__form-cancel');
+            const buttonPublishAll = document.querySelector('.admin__publish-all');
+            const crops = [];
+
+            const addImagePreview = (image, index) => {
+                const imageElement = document.createElement('img');
+                imageElement.src = image;
+                imageElement.className = 'admin-form__preview';
+                fileGroup.appendChild(imageElement);
+                cropper = new Cropper.default(imageElement, {
+                    template: `
+                        <div class="admin-form__preview">
+                            <cropper-canvas class="admin-form__preview-crop" background data-index="${index}">
+                                <cropper-image src="${image}" scalable translatable></cropper-image>
+                                <cropper-shade hidden></cropper-shade>
+                                <cropper-handle action="select" plain></cropper-handle>
+                                <cropper-selection initial-coverage="1" dynamic movable zoomable aspectRatio="0.890625">
+                                    <cropper-grid role="grid" covered></cropper-grid>
+                                    <cropper-crosshair centered></cropper-crosshair>
+                                    <cropper-handle action="move" theme-color="rgba(255, 255, 255, 0.35)"></cropper-handle>
+                                </cropper-selection>
+                            </cropper-canvas>
+                            <button type="button" class="admin__file-preview-delete" data-index="${index}">
+                                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="currentColor"></path> </g></svg>
+                            </button>
+                        </div>
+                    `,
+                });
+                crops.push(cropper);
+            }
+
+            if (images.length) {
+                images.forEach(addImagePreview);
+            }
+
+            const isValid = ({ validity, type, value, required }) => {
+                if (!validity.valid) {
+                    return false;
+                }
+
+                if (!required) {
+                    return true;
+                }
+
+                if (type === 'text' || type === 'file') {
+                    return value.length > 0;
+                }
+
+                return true;
+            }
+            const supportedFileMimeTypes = [
+                "image/png",
+                "image/jpeg",
+            ];
+
+            const getImageProps = (files) => Promise.all(
+                Array.from(files).filter((file) => 
+                    supportedFileMimeTypes.includes(file.type)
+                ).map((file, index) => new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result);
+                    reader.onerror = reject;
+                }))
+            );
+
+            const getFieldValue = async ({ name, value, type, files }) => {
+                if (!name) {
+                    return;
+                }
+
+                if (type === 'file') {
+                    return await getImageProps(files)
+                } else {
+                    return value;
+                }
+            }
+
+            const getFormValues = async (validate = false) => {
+                const fields = formElement.elements;
+                const res = {};
+
+                const hasError = Array.from(fields).some((element) => {
+                    const { name } = element
+                    if (!name) {
+                        return false;
+                    }
+
+                    return !isValid(element);
+                });
+
+                if (validate && hasError) {
+                    return res;
+                }
+
+                res.description = await getFieldValue(fields.description);
+                res.price = Number(await getFieldValue(fields.price));
+                res.images = await getFieldValue(fields.images) ?? [];
+
+                return res;
+            }
+
+            const createProduct = async () => {
+                const res = await getFormValues(true);
+                res.typeId = Number(typeId);
+
+                res.images = await Promise.all(crops.map((crop) => crop.getCropperCanvas().$toCanvas().then((canvas) => canvas.toDataURL())));
+
+                fetch('/api/v1/products', {
+                    method: 'POST',
+                    body: JSON.stringify(res),
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(() => {
+                    window.location.assign('/admin/products?typeId=' + typeId);
+                }).catch((e) => console.error(e))
+            }
+
+            const saveProduct = async () => {
+                const res = await getFormValues(true);
+                res.images = await Promise.all(crops.map((crop) => crop.getCropperCanvas().$toCanvas().then((canvas) => canvas.toDataURL())));
+                fetch('/api/v1/products/' + id, {
+                    method: 'PUT',
+                    body: JSON.stringify(res),
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(() => {
+                    window.location.assign('/admin/products?typeId=' + typeId);
+                }).catch((e) => console.error(e))
+            }
+
+            const deleteProduct = async (id) => {
+                fetch('/api/v1/products/' + id, {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' }
+                }).then(() => {
+                    window.location.reload();
+                }).catch((e) => console.error(e))
+            }
+
+            const publishProducts = async (id) => {
+                fetch('/api/v1/products/publish/' + (id ?? '')).then(() => {
+                    window.location.assign('/admin/products?typeId=' + typeId);
+                }).catch((e) => console.error(e))
+            }
+
+            cancelBtn.addEventListener('click', () => {
+                window.location.assign('/admin/products?typeId=' + typeId);
+            });
+
+            fileInput.addEventListener('change', async () => {
+                const res = await getFormValues();
+                images = [...images, ...res.images];
+                fileGroup.innerHTML = '';
+                if (images.length) {
+                    images.forEach(addImagePreview);
+                }
+            });
+
+            ["dragover", "drop"].forEach(function(event) {
+                document.addEventListener(event, function(evt) {
+                    evt.preventDefault();
+                    return false;
+                });
+            })
+
+            dropZone.addEventListener('drop', async (event) => {
+                fileInput.files = event.dataTransfer.files;
+                const res = await getFormValues();
+                images = [...images, ...res.images];
+                fileGroup.innerHTML = '';
+                if (images.length) {
+                    images.forEach(addImagePreview);
+                }
+            });
+
+            formElement.addEventListener('click', ({ target }) => {
+                if (target.classList.contains('admin__file-preview-delete')) {
+                    const index = target.dataset.index;
+                    images.splice(index, 1);
+                    crops.splice(index, 1);
+                    fileGroup.innerHTML = '';
+                    if (images.length) {
+                        images.forEach(addImagePreview);
+                    }
+                }
+            });
+
+            formElement.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                id ? saveProduct(id) : createProduct();
+            });
+        });
+    </script>
+</body>
+</html>

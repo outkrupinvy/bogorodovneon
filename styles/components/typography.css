@@ -1,0 +1,26 @@
+.section-title {
+    max-width: 600px;
+    font: var(--title-font-l);
+    margin-bottom: 60px;
+}
+
+.link {
+    color: #F077EB;
+    transition: all .3s;
+}
+
+.link:hover, .link:active {
+    color: var(--accent-color-hover);
+}
+
+@media screen and (max-width: 1024px) {
+    .section-title {
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .section-title {
+        margin-bottom: 20px;
+    }
+}

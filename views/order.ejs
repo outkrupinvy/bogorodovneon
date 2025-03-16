@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="styles/order.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/header', { activePage: '' }); %>
+    <main class="order__main">
+        <form class="order__form" action="#">
+            <section class="order__container" data-page="0">
+                <div class="order">
+                    <div class="order__header">
+                        <h2 class="order-header__title"><%= renderData.title %></h2>
+                        <span class="order-header__page">Вопрос 1 из <%= questionsCount %></span>
+                    </div>
+                    <div class="order__card-list">
+                        <% renderData.options.forEach(function(option, index){ %>
+                            <% const contentClassname = 'order-card__content' + (option.img ? '_with-img' : '_with-text'); %>
+                            <article class="order__card">
+                                <input class="order-card__input" <% if (index === 0) { %>checked<% } %> type="radio" name="<%= renderData.id %>" value="<%= option.name %>" id="<%= option.id %>">
+                                <label for="<%= option.id %>" class="<%= contentClassname %>">
+                                    <% if (option.img) { %>
+                                        <div class="order-card__poster">
+                                            <img class="order-card__poster-img" src="<%= option.img %>">
+                                        </div>
+                                    <% } %>
+                                    <h3 class="order-card__title"><%= option.name %></h3>
+                                    <% if (option.description) { %>
+                                        <p class="order-card__description"><%= option.description %></p>
+                                    <% } %>
+                                    <% if (option.label) { %>
+                                        <p class="order-card__label"><%= option.label %></p>
+                                    <% } %>
+                                </label>
+                            </article>
+                        <% }); %>
+                    </div>
+                    <div class="order__footer order__footer_one-button">
+                        <button type="button" class="button-primary order-button__next">Дальше</button>
+                    </div>
+                </div>
+            </section>
+        </form>
+    </main>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            let page = 0;
+            let productName = null;
+            const serverData = JSON.parse('<%- data %>');
+            const lastPage = serverData.length - 1;
+
+            const backButton = document.querySelector('.order-button__back');
+            const nextButton = document.querySelector('.order-button__next');
+            const formElement = document.querySelector('.order__form');
+            const nextButtonClickHandler = () => {
+                const nextPage = page + 1;
+                const isLastQuestion = nextPage === lastPage;
+                const isSubmitPage = nextPage > lastPage;
+
+                let nextQuestionData = null;
+
+                if (!isSubmitPage) {
+                    nextQuestionData = serverData[nextPage].common ? serverData[nextPage] : serverData[nextPage][productName];
+                }
+
+                const newHtml = isSubmitPage ? `
+                    <div class="order order__final">
+                        <div class="order__left">
+                            <div class="order-left__header">
+                                <h2 class="order-header__title">Спасибо за ваши ответы</h2>
+                                <p class="order-header__description">Оставьте ваши контактные данные, чтобы мы отправили подарок и рассказали о стоимости.</p>
+                            </div>
+                            <div class="order-left__inputs">
+                                <input class="form__text-field" type="text" name="name" id="name" placeholder="Ваше имя" autocomplete="off">
+                                <input class="form__text-field" type="text" name="phone_number" id="phone_number" placeholder="Номер телефона">
+                            </div>
+                            <div class="order-left__checkboxes">
+                                <p class="order-left__checkboxes-title">Предпочтительный способ связи</p>
+                                <div class="form__checkbox-group">
+                                    <div class="form__checkbox-field">
+                                        <input class="form__checkbox-input" type="checkbox" value="telephone" name="contact_by" id="telephone">
+                                        <label class="form__checkbox-label" for="telephone">Звонок</label>
+                                        <svg class="form__checkbox-checked-icon" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.70444 7.27329L1.21906 4.7897C1.08514 4.65587 0.903505 4.58069 0.714111 4.58069C0.524717 4.58069 0.34308 4.65587 0.209158 4.7897C0.0752365 4.92353 0 5.10503 0 5.29429C0 5.388 0.0184712 5.4808 0.0543586 5.56738C0.0902461 5.65395 0.142847 5.73262 0.209158 5.79888L3.20306 8.79065C3.4824 9.06978 3.93363 9.06978 4.21297 8.79065L11.7908 1.21819C11.9248 1.08437 12 0.902859 12 0.713601C12 0.524342 11.9248 0.342835 11.7908 0.209009C11.6569 0.0751829 11.4753 0 11.2859 0C11.0965 0 10.9149 0.0751829 10.7809 0.209009L3.70444 7.27329Z" fill="white"/>
+                                        </svg>                                
+                                    </div>
+                                    <div class="form__checkbox-field">
+                                        <input class="form__checkbox-input" type="checkbox" value="whatsapp" name="contact_by" id="whatsapp">
+                                        <label class="form__checkbox-label" for="whatsapp">WhatsApp</label>
+                                        <svg class="form__checkbox-checked-icon" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.70444 7.27329L1.21906 4.7897C1.08514 4.65587 0.903505 4.58069 0.714111 4.58069C0.524717 4.58069 0.34308 4.65587 0.209158 4.7897C0.0752365 4.92353 0 5.10503 0 5.29429C0 5.388 0.0184712 5.4808 0.0543586 5.56738C0.0902461 5.65395 0.142847 5.73262 0.209158 5.79888L3.20306 8.79065C3.4824 9.06978 3.93363 9.06978 4.21297 8.79065L11.7908 1.21819C11.9248 1.08437 12 0.902859 12 0.713601C12 0.524342 11.9248 0.342835 11.7908 0.209009C11.6569 0.0751829 11.4753 0 11.2859 0C11.0965 0 10.9149 0.0751829 10.7809 0.209009L3.70444 7.27329Z" fill="white"/>
+                                        </svg>         
+                                    </div>
+                                    <div class="form__checkbox-field">
+                                        <input class="form__checkbox-input" type="checkbox" value="telegram" name="contact_by" id="telegram">
+                                        <label class="form__checkbox-label" for="telegram">Telegram</label>
+                                        <svg class="form__checkbox-checked-icon" width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M3.70444 7.27329L1.21906 4.7897C1.08514 4.65587 0.903505 4.58069 0.714111 4.58069C0.524717 4.58069 0.34308 4.65587 0.209158 4.7897C0.0752365 4.92353 0 5.10503 0 5.29429C0 5.388 0.0184712 5.4808 0.0543586 5.56738C0.0902461 5.65395 0.142847 5.73262 0.209158 5.79888L3.20306 8.79065C3.4824 9.06978 3.93363 9.06978 4.21297 8.79065L11.7908 1.21819C11.9248 1.08437 12 0.902859 12 0.713601C12 0.524342 11.9248 0.342835 11.7908 0.209009C11.6569 0.0751829 11.4753 0 11.2859 0C11.0965 0 10.9149 0.0751829 10.7809 0.209009L3.70444 7.27329Z" fill="white"/>
+                                        </svg>         
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="order-left__footer">
+                                <button type="button" class="button-secondary order-button__back">Назад</button>
+                                <button type="submit" class="button-primary order-button__submit">Отправить</button>
+                            </div>
+                        </div>
+                        <div class="order__right">
+                            <img class="order-card__poster-img" src="/img/order_right_img.png">
+                        </div>
+                    </div>
+                ` : `
+                    <div class="order">
+                        <div class="order__header">
+                            <h2 class="order-header__title">${nextQuestionData.title}</h2>
+                            <span class="order-header__page">Вопрос ${nextPage + 1} из ${serverData.length}</span>
+                        </div>
+                        <div class="order__card-list">
+                            ${nextQuestionData.options.reduce((html, option, index) => {
+                                const img = option.img ? `
+                                    <div class="order-card__poster">
+                                        <img class="order-card__poster-img" src="${option.img}">
+                                    </div>
+                                ` : '';
+                                const description = option.description ? `
+                                        <p class="order-card__description">${option.description}</p>
+                                ` : '';
+                                const label = option.label ? `
+                                        <p class="order-card__label">${option.label}</p>
+                                ` : '';
+                                return html + `
+                                    <article class="order__card">
+                                        <input class="order-card__input" ${index === 0 ? 'checked' : ''} type="radio" name="${nextQuestionData.id}" value="${option.name}" id="${option.id}">
+                                        <label for="${option.id}" class="order-card__content${img !== '' ? '_with-img' : '_with-text'}">
+                                            ${img}
+                                            <p class="order-card__title">${option.name}</p>
+                                            ${description}
+                                            ${label}
+                                        </label>
+                                    </article>
+                                `;
+                            }, '')}
+                        </div>
+                        <div class="order__footer">
+                            <button type="button" class="button-secondary order-button__back">Назад</button>
+                            <button type="button" class="button-primary order-button__next">${isLastQuestion ? 'Получить подарок' : 'Дальше'}</button>
+                        </div>
+                    </div>
+                `;
+                const nextElement = document.createElement('section');
+                nextElement.className = 'order__container';
+                nextElement.setAttribute('data-page', nextPage);
+                nextElement.innerHTML = newHtml;
+                formElement.appendChild(nextElement);
+                formElement.classList.toggle('order__form_scrolling');
+                nextElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                formElement.classList.toggle('order__form_scrolling');
+                page++;
+            };
+            const backButtonClickHandler = () => {
+                formElement.classList.toggle('order__form_scrolling');
+                const currentElement = document.querySelector(`[data-page="${page}"]`);
+                const prevElement = document.querySelector(`[data-page="${page - 1}"]`);
+                prevElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                formElement.classList.toggle('order__form_scrolling');
+                currentElement.remove();
+                page--;
+            };
+            formElement.addEventListener('click', ({ target }) => {
+                if (target.classList.contains('order-button__next')) {
+                    if (page === 0) {
+                        productName = document.querySelector('[checked]').getAttribute('id');
+                    }
+                    nextButtonClickHandler();
+                }
+
+                if (target.classList.contains('order-button__back')) {
+                    backButtonClickHandler();
+                }
+            });
+            formElement.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const fields = e.target.elements;
+                Array.from(fields).forEach((element) => {
+                    const { name, value, checked, type } = element
+                    if (!name) {
+                        return;
+                    }
+
+                    if (type === 'text' || checked === true) {
+                        console.log({ name, value })
+                    }
+                })
+            });
+        });
+    </script>
+    <%- include('partials/footer'); %>
+</body>
+</html>

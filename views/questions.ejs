@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="styles/questions.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/header', { activePage: 'questions' }); %>
+    <main>
+        <section class="container hero">
+            <div class="hero__bg-wrapper">
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <img class="hero__bg-img" src="/img/banner-questions.png">
+            </div>
+            <div class="hero__content">
+                <h1 class="hidden" aria-hidden="true">Good vibes</h1>
+                <p class="hero__title">Отвечаем на ваши вопросы</p>
+                <p class="hero__text hero__text">Не уверены в том, что ищете? Наша отзывчивая и дружелюбная команда всегда готова помочь вам в этом процессе, предлагая индивидуальные консультации по телефону или в удобном для вас мессенджере.</p>
+                <button class="button-secondary button_small hero__button">Задать вопрос</button>
+            </div>
+        </section>
+        <section class="container container_small questions">
+            <ul class="questions-list">
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Неоновая вывеска это опасно?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-1-panel"
+                        aria-labelledby="question-1"
+                    >
+                        <p class="questions-item__text">Конечно нет. Все наши вывески из качественных экологически чистых материалов. Не содержат внутри ртути или газа (в отличии от стеклянного неона). Имеют повышенную степень прочности. Сам неон имеет пониженное напряжение 12 Вольт, которое исключает возможность возгорания.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Какой срок службы неоновой вывески?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-2-panel"
+                        aria-labelledby="question-2"
+                    >
+                        <p class="questions-item__text">Срок службы вывесок из гибкого неона 50000 часов в работающем режиме. Это больше 5 лет.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Даёте ли вы гарантию?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Да, мы даем гарантию на наши изделия в течение 12 месяцев.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Делаете ли вы изделия по индивидуальному дизайну?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Да, мы изготавливаем любые вывески. Любой рисунок, макет, идею, даже фотографию мы можем адаптировать. Каждый этап макета согласовываем с вами и вносим необходимые корректировки.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Как узнать точную стоимость вывески?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Если вы хотите узнать стоимость индивидуальной вывески, свяжитесь с нами любым удобным для вас способом:</p>
+                        <ul class="list_standard questions-item__text">
+                            <li>заполните форму на сайте,</li>
+                            <li>позвоните по телефону,</li>
+                            <li>напишите на любой мессенджер: WhatsApp, Telegram, VK, e-mail.</li>
+                        </ul>
+                        <p class="questions-item__text">Расскажите нам о своей идее, по возможности, прикрепите логотип, фото, рисунок или ссылкуна изображение. Мы в кратчайшие сроки рассчитаем стоимость будущей вывески и обозначим сроки реализации вашей идеи. Ответим на все дополнительные вопросы.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Какой срок изготовления вывески?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Каждая вывеска это уникальное изделие, которое собирается мастером вручную. Стандартный срок изготовления вывески составляет 3-10 рабочих дней. Точный срок изготовления может варьироваться от сложности заказа. Актуальный срок изготовления конкретной вывески рассчитываем непосредственно перед оформлением заказа.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Как подключаются вывески? И сколько они потребляют электричества?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Наши вывески подключаются к питанию 220V с помощью блока питания (сетевого адаптера), который подбирается для каждой вывески индивидуально, по мощности, что делаетих безопасными и экономичными по потреблению электричества. Расход электричествазависит от габаритов вывески.</p>
+                        <p class="questions-item__text">Например: неоновая вывеска 1 метр, потребляет меньше, чем обычная лампочка. При необходимости, мы дополнительно комплектуем наши изделия вилкой для розетки, выключателем, а также диммером с пультом дистанционного управления для включения/выключения и регулировки яркости.</p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <!-- Заменить на свг в псевдоэлемент -->
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">На что крепится вывеска?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Уличная вывеска крепится на фасад здания специальными креплениями. Это осуществляется только обученными специалистами.</p>
+                        <p class="questions-item__text">Интерьерные вывески можно установить на стену, используя дистанционные держатели(эстетичные крепления). Также можно повесить в окно на тросик. Если вывеска не очень большая можно использовать подставку. Монтаж своими руками, можно посмотреть <a class="link" href="/info#instruction">здесь.</a></p>
+                    </section>
+                </li>
+                <li class="questions-item">
+                    <h3>
+                        <button
+                            class="questions-item__button"
+                            id="question-1"
+                            aria-expanded="false"
+                            aria-controls="question-1-panel"
+                        >
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_collapsed" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7 15C7 15.5523 7.44772 16 8 16C8.55229 16 9 15.5523 9 15V9H15C15.5523 9 16 8.55229 16 8C16 7.44772 15.5523 7 15 7H9V1C9 0.447715 8.55229 0 8 0C7.44772 0 7 0.447715 7 1V7H1C0.447715 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H7V15Z" fill="currentColor"/>
+                            </svg>
+                            <svg tabindex="-1" class="questions-item__icon questions-item__icon_expanded" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect y="7" width="16" height="2" rx="1" fill="currentColor"/>
+                            </svg>
+                            <span tabindex="-1" class="question-item__title">Есть ли монтаж, платно ли это?</span>
+                        </button>
+                    </h3>
+                    <section
+                        class="questions-item__content"
+                        id="question-3-panel"
+                        aria-labelledby="question-3"
+                    >
+                        <p class="questions-item__text">Да. Монтаж (установка) — дополнительная услуга в Москве и М.О.</p>
+                        <p class="questions-item__text">Стоимость от 4500р. Выполняется опытными мастерами, которые обладают профессиональными навыками и оборудованием.</p>
+                        <p class="questions-item__text">Что влияет на стоимость монтажа:</p>
+                        <ul class="list_standard questions-item__text">
+                            <li>вывод 220V у места установки,</li>
+                            <li>высота установки вывески,</li>
+                            <li>местоположение монтажа,</li>
+                            <li>срочность монтажа,</li>
+                            <li>демонтаж старой вывески,</li>
+                            <li>дополнительные услуги.</li>
+                        </ul>
+                        <p class="questions-item__text">Точную стоимость конкретной вывески вы можете уточнить у нас.</p>
+                    </section>
+                </li>
+            </ul>
+        </section>
+    </main>
+    <%- include('partials/footer'); %>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const accordeonButtons = document.querySelectorAll('.questions-item__button');
+            const textSections = document.querySelectorAll('.questions-item__content');
+            accordeonButtons.forEach((btn, index) => {
+                btn.addEventListener('click', ({ currentTarget }) => {
+                    const isOpen = currentTarget.getAttribute('aria-expanded') === 'true';
+                    currentTarget.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+                    const textSection = textSections.item(index);
+                    textSection.classList.toggle('questions-item__content_visible');
+                })
+            });
+        });
+    </script>
+</body>
+</html>

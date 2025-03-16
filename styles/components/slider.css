@@ -1,0 +1,38 @@
+.slider__list {
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+    padding: 0 var(--container-padding-block);
+    margin: 0 calc(var(--container-padding-block) * -1) 60px;
+}
+
+.slider__list-item {
+    flex: 0 0 285px;
+}
+
+.slider__card {
+    position: relative;
+    padding-inline: 40px;
+    padding-block: 60px 146px;
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+}
+
+.slider-card__title {
+    font: var(--title-font-m);
+    margin-bottom: 24px;
+}
+
+.slider-card__number {
+    position: absolute;
+    left: 40px;
+    bottom: -45px;
+    width: 197px;
+    height: 129px;
+    background-color: #fff;
+}
+
+.slider__navigation {
+    display: flex;
+    gap: 8px;
+} 

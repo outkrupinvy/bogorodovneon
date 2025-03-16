@@ -1,0 +1,85 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Master {
+  id           Int       @id @default(autoincrement())
+  name         String
+  phone_number String
+  telegram     String
+  vk           String
+  whatsapp     String
+  youtube      String
+  main_video   String
+  images       Image[]
+  adress       String
+  workdays     String
+  worktime     String
+  geomark      String
+  created_at   DateTime  @default(now())
+  updated_at   DateTime  @updatedAt
+
+  @@map("master")
+}
+
+model ProductType {
+  id         Int       @id @default(autoincrement())
+  name       String    @unique
+  products   Product[]
+  published  Boolean   @default(false)
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+
+  @@map("product_types")
+}
+
+model Image {
+  id           Int      @id @default(autoincrement())
+  content      String
+  created_at   DateTime @default(now())
+  master       Master?  @relation(fields: [masterId], references: [id])
+  masterId     Int?
+  product      Product?  @relation(fields: [productId], references: [id])
+  productId    Int?
+  testimony    Testimony?  @relation(fields: [testimonyId], references: [id])
+  testimonyId  Int?
+
+  @@map("images")
+}
+
+model Product {
+  id            Int         @id @default(autoincrement())
+  name          String?
+  type          ProductType @relation(fields: [productTypeId], references: [id])
+  productTypeId Int
+  description   String
+  price         Int
+  images        Image[]
+  published     Boolean     @default(false)
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+
+  @@map("products")
+}
+
+model Testimony {
+  id            Int         @id @default(autoincrement())
+  images        Image[]
+  published     Boolean     @default(false)
+  created_at    DateTime    @default(now())
+  updated_at    DateTime    @updatedAt
+
+  @@map("testimonies")
+}

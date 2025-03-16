@@ -1,0 +1,34 @@
+.subnavigation {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 100%;
+}
+
+.subnavigation__link {
+    position: relative;
+    display: inline-block;
+    font: var(--text-font-m);
+    font-weight: 500;
+    white-space: nowrap;
+    color: inherit;
+    transition: all .3s;
+}
+
+.subnavigation__link:hover,
+.subnavigation__link:active,
+.subnavigation__link_active,
+.subnavigation__link:focus {
+    color: #fd9ffa;
+    border-color: #fd9ffa;
+}
+
+@media screen and (max-width: 600px) {
+    .subnavigation {
+        gap: 8px;
+    }
+    .subnavigation__link {
+        padding-inline: 16px;
+    }
+}

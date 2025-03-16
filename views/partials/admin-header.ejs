@@ -1,0 +1,12 @@
+<header class="container header admin-header">
+    <a href="/" class="header__logo">
+        <img class="header-logo__img" src="/img/logo.png">
+    </a>
+    <nav class="header__nav">
+        <ul class="header__nav-list">
+            <%- include('../components/header-link', { url: '/admin/product_types', text: 'Категории', isActive: activePage === 'product_types' }); %>
+            <%- include('../components/header-link', { url: '/admin/products', text: 'Изделия', isActive: activePage === 'products' }); %>
+            <%- include('../components/header-link', { url: '/admin/testimonies', text: 'Отзывы', isActive: activePage === 'testimonies' }); %>
+        </ul>
+    </nav>
+</header>

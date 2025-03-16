@@ -1,0 +1,135 @@
+.simple-grid {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.simple-grid__card {
+    position: relative;
+    flex: 1 1 180px;
+    max-width: 389px;
+    padding: var(--card-padding);
+    border-radius: var(--card-radius);
+    aspect-ratio: 389 / 441;
+}
+
+.simple-grid-card__img {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    object-fit: cover;
+}
+
+.simple-grid-card__title {
+    font: var(--title-font-m);
+}
+
+.advanced-grid {
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    gap: 20px;
+}
+
+.advanced-grid__item {
+    grid-column: span 6;
+    order: 1;
+}
+
+.advanced-grid__item_small {
+    grid-column: span 5;
+}
+
+.advanced-grid__item_middle {
+    grid-column: span 8;
+}
+
+.advanced-grid__item_order_0 {
+    order: 0;
+}
+
+.advanced-grid__item_order_1 {
+    order: 1;
+}
+
+.advanced-grid__item_order_2 {
+    order: 2;
+}
+
+.advanced-grid__item_order_3 {
+    order: 3;
+}
+
+.advanced-grid__item_order_4 {
+    order: 4;
+}
+
+.advanced-grid__item_order_5 {
+    order: 5;
+}
+
+.advanced-grid__item_order_6 {
+    order: 6;
+}
+
+.advanced-grid__item_span-h {
+    grid-column: span 10;
+}
+
+.advanced-grid__item_span-v {
+    grid-row: span 2;
+}
+
+.advanced-grid__card {
+    height: 100%;
+    padding: var(--card-padding);
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+}
+
+.advanced-grid__card_with-image {
+    padding: 0;
+}
+
+.advanced-grid__card_with-image, .advanced-grid__card_accent {
+    overflow: hidden;
+    border: none;
+}
+
+.advanced-grid__card_accent {
+    background-color: var(--accent-color);
+}
+
+.advanced-grid-card__cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.advanced-grid-card__title {
+    font: var(--title-font-m);
+    margin-bottom: 24px;
+}
+
+.advanced-grid-card__text:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+@media screen and (max-width: 600px) {
+    .simple-grid {
+        flex-direction: column;
+    }
+    .simple-grid__card {
+        flex-basis: unset;
+        max-width: unset;
+        width: 100%;
+    }
+
+    .advanced-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .advanced-grid__item {
+        grid-column: auto;
+    }
+}

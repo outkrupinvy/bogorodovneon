@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('../../partials/head'); %>
+    <link rel="stylesheet" href="/styles/products.css">
+    <link rel="stylesheet" href="/styles/admin.css">
+    <title>Админка</title>
+</head>
+<body>
+    <%- include('../../partials/admin-header', { activePage: 'testimonies' }); %>
+    <main>
+        <section class="container">
+            <div class="admin__header">
+                <h1 class="section-title admin__title"><%= title %></h1>
+                <a href="/admin/testimonies/new" class="button-primary">Добавить</a>
+                <button type="button" class="button-primary admin__publish-all">Опубликовать все</button>
+            </div>
+            <div class="admin__card-list">
+                <% if (data.length > 0) { %>
+                    <% data.forEach(function(item, index){ %>
+                        <article class="product__card admin__product-card">
+                            <div class="product__poster">
+                                <img class="product-poster__img" src="<%= item.images?.[0]?.content %>">
+                            </div>
+                            <div class="admin__product-button-group">
+                                <button type="button" class="admin__item-delete" data-id="<%= item.id %>">
+                                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6.99486 7.00636C6.60433 7.39689 6.60433 8.03005 6.99486 8.42058L10.58 12.0057L6.99486 15.5909C6.60433 15.9814 6.60433 16.6146 6.99486 17.0051C7.38538 17.3956 8.01855 17.3956 8.40907 17.0051L11.9942 13.4199L15.5794 17.0051C15.9699 17.3956 16.6031 17.3956 16.9936 17.0051C17.3841 16.6146 17.3841 15.9814 16.9936 15.5909L13.4084 12.0057L16.9936 8.42059C17.3841 8.03007 17.3841 7.3969 16.9936 7.00638C16.603 6.61585 15.9699 6.61585 15.5794 7.00638L11.9942 10.5915L8.40907 7.00636C8.01855 6.61584 7.38538 6.61584 6.99486 7.00636Z" fill="currentColor"></path> </g></svg>
+                                </button>
+                                <a href="/admin/testimonies/<%= item.id %>" class="button-secondary button_small"">Редактировать</a>
+                                <% if (!item.published) { %>
+                                    <button type="button" class="button-secondary button_small admin__publish" data-id="<%= item.id %>">Опубликовать</button>
+                                <% } %>
+                            </div>
+                        </article>
+                    <% }); %>
+                <% }; %>
+            </div>
+        </section>
+        <script>
+            window.addEventListener('DOMContentLoaded', () => {
+                const buttonPublishAll = document.querySelector('.admin__publish-all');
+                const products = document.querySelectorAll('.product__card');
+
+                const deleteTestimony = async (id) => {
+                    fetch('/api/v1/testimonies/' + id, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' }
+                    }).then(() => {
+                        window.location.reload();
+                    }).catch((e) => console.error(e))
+                }
+
+                const publishTestimonies = async (id) => {
+                    fetch('/api/v1/testimonies/publish/' + (id ?? '')).then(() => {
+                        window.location.reload();
+                    }).catch((e) => console.error(e))
+                }
+
+                // products.forEach((product) => {
+                //     product.addEventListener('click', ({ target }) => {
+                //         if (target.classList.contains('admin__item-delete')) {
+                //             const id = target.dataset.id;
+                //             deleteProduct(id)
+                //         }
+                //         if (target.classList.contains('admin__publish')) {
+                //             const id = target.dataset.id;
+                //             publishProducts(id)
+                //         }
+                //     });
+                // });
+                document.addEventListener('click', ({ target }) => {
+                    if (target.classList.contains('admin__item-delete')) {
+                        const id = target.dataset.id;
+                        deleteTestimony(id)
+                    }
+                    if (target.classList.contains('admin__publish')) {
+                        const id = target.dataset.id;
+                        publishTestimonies(id)
+                    }
+                });
+
+                buttonPublishAll.addEventListener('click', publishTestimonies);
+            });
+        </script>
+    </main>
+</body>
+</html>

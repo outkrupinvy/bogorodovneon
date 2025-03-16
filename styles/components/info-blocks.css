@@ -1,0 +1,134 @@
+.info-block__wrapper {
+    --text-gap: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.info-block__wrapper_card-mode {
+    --text-gap: 30px;
+    border: 1px solid #fff;
+    border-radius: var(--card-radius);
+    padding: 10.5% 12.5%;
+}
+
+.info-block_large {
+    flex-basis: 480px;
+    max-width: 480px;
+}
+
+.info-block {
+    flex-basis: 360px;
+    max-width: 360px;
+}
+
+.info-block_small {
+    flex-basis: 240px;
+    max-width: 240px;
+}
+
+.info-block__title {
+    font: var(--title-font-l);
+}
+
+.info-block__text {
+    margin-top: 1em;
+}
+
+.info-block__text_large {
+    margin-top: var(--text-gap);
+    font: var(--title-font-m);
+}
+
+.info-block__text:first-child {
+    margin-top: var(--text-gap);
+}
+
+.info-block__button {
+    margin-top: var(--text-gap);
+}
+
+.info-block__list {
+    margin-top: 1em;
+    padding-inline-start: 20px;
+}
+
+.info-block__list-item {
+    list-style-type: disc;
+}
+
+.info-block__media {
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 480 / 600;
+    flex-basis: 480px;
+    max-width: 480px;
+    border-radius: var(--card-radius);
+}
+
+.info-block__media_video {
+    aspect-ratio: 360 / 640;
+    flex-basis: 360px;
+    max-width: 360px;
+}
+
+.info-block__media_small {
+    aspect-ratio: 240 / 320;
+    flex-basis: 240px;
+    max-width: 240px;
+}
+
+.info-block__media_medium {
+    aspect-ratio: 360 / 320;
+    flex-basis: 360px;
+    max-width: 360px;
+}
+
+.info-block__media-cover {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    object-fit: cover;
+    width: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    .info-block__wrapper {
+        --text-gap: 40px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .info-block__wrapper {
+        flex-direction: column;
+    }
+    .info-block,
+    .info-block_small,
+    .info-block_large,
+    .info-block__media {
+        flex-basis: unset;
+        max-width: unset;
+        width: 100%;
+    }
+    .info-block__media {
+        order: -1;
+    }
+
+    .info-block__media_video {
+        flex-basis: 640px;
+    }
+
+    .info-block__wrapper_card-mode {
+        padding: 0;
+        border: none;
+        gap: 12px;
+    }
+    .info-block__wrapper_card-mode .info-block,
+    .info-block__wrapper_card-mode .info-block_small,
+    .info-block__wrapper_card-mode .info-block_large {
+        border: 1px solid #fff;
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+    }
+}

@@ -1,0 +1,132 @@
+.contacts-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 840px;
+    padding: 80px 120px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+}
+
+.contacts-form__title {
+    font: var(--title-font-l);
+}
+
+.contacts-form__form-item:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.contacts-form__form-item_margin-l {
+    margin-bottom: 40px;
+}
+
+.contacts-form__form-item_margin-s {
+    margin-bottom: 10px;
+}
+
+.contacts-form_submit[class] {
+    align-self: start;
+    font: 400 var(--text-font-m);
+}
+
+.contacts-info {
+    padding-top: 0;
+}
+
+.contacts-info__wrapper {
+    display: flex;
+    gap: 20px;
+}
+
+.contacts-info__card {
+    /* max-width: 285px; */
+    padding: 30px 40px;
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+}
+
+.contacts-info__card-link {
+    font: var(--text-font-s);
+    margin-bottom: 8px;
+    color: inherit;
+    transition: all .3s;
+}
+
+.contacts-info__card-links {
+    display: flex;
+    gap: 20px;
+}
+
+.contacts-info__card-link:hover,
+.contacts-info__card-link:active,
+.contacts-info__card-link:focus {
+    color: #fd9ffa;
+}
+
+.contacts-info-card__title {
+    font: var(--title-font-m);
+    margin-bottom: 24px;
+}
+
+.map-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: var(--container-max-width);
+    margin-inline: auto;
+    width: 100%;
+    height: 600px;
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+}
+
+@media screen and (max-width: 1024px) {
+    .contacts-form {
+        padding: 0;
+        border: none;
+    }
+
+    .contacts-form__description,
+    .contacts-form__checkbox-group {
+        padding: var(--card-padding);
+        border: 1px solid var(--main-text-color);
+        border-radius: var(--card-radius);
+    }
+
+    .contacts-info__wrapper {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .contacts-info__card {
+        padding: var(--card-padding);
+        width: calc(50% - 6px);
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contacts-form__form-item:not(:last-child) {
+        margin-bottom: 8px;
+    }
+
+    .contacts-form__description {
+        margin-bottom: 20px;
+    }
+
+    .contacts-info__wrapper {
+        flex-direction: column;
+    }
+
+    .contacts-info__card {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .contacts-form__checkbox-group .form__checkbox-group {
+        flex-direction: column;
+    }
+}

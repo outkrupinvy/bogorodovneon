@@ -1,0 +1,164 @@
+.subnavigation {
+    margin-top: 16px;
+}
+
+.admin__form-file-icon {
+    width: 80px;
+    height: 80px;
+}
+
+.admin__header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.admin__header .button-primary {
+    white-space: nowrap;
+}
+
+.admin__title {
+    margin: 0;
+}
+
+.admin__card-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.admin__product-card {
+    min-width: 186px;
+    color: #fff;
+}
+
+.admin__card,
+.admin__form {
+    flex: 1 1 300px;
+    min-width: 300px;
+    padding: 20px;
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+}
+
+.admin__description {
+    margin-bottom: 8px;
+}
+
+.admin__title {
+    flex: 1 1 100%;
+}
+
+.admin__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 70%;
+    margin-inline: auto;
+    margin-top: 20px;
+}
+
+.admin__form-title {
+    font: var(--title-font-m);
+}
+
+.admin__form-file-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.admin__button-group {
+    display: flex;
+    gap: 16px;
+    justify-content: flex-end;
+}
+
+.admin__form-file {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--card-radius);
+    font: var(--text-font-l);
+    color: #fff;
+}
+
+.admin__form-file input {
+    display: none;
+}
+
+.admin-form__preview {
+    position: relative;
+    border-radius: var(--card-radius);
+    display: inline-block;
+    flex: 0 0 285px;
+}
+
+.admin-form__preview-crop {
+    border-radius: var(--card-radius);
+    aspect-ratio: calc(285 / 320);
+    width: 285px;
+}
+
+.admin__file-preview-delete,
+.admin__item-delete {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    color: var(--alt-text-color);
+    border-radius: 50%;
+    transition: all .3s;
+}
+
+.admin__file-preview-delete:hover {
+    transform: scale(1.2);
+}
+
+.admin__file-preview-delete::after,
+.admin__item-delete:after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.admin__file-preview-delete svg {
+    width: 80%;
+    height: 80%;
+}
+
+.admin__product-button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 16px;
+}
+
+.admin__product-unpublished-mark {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.admin__product-unpublished-mark svg {
+    width: 80%;
+    height: 80%;
+}

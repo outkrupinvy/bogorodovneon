@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <%- include('partials/head'); %>
+    <link rel="stylesheet" href="styles/about.css">
+    <title><%= title %></title>
+</head>
+<body>
+    <%- include('partials/header', { activePage: 'about' }); %>
+    <main>
+        <section class="container hero">
+            <div class="hero__bg-wrapper">
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <div class="hero__bg-panel"></div>
+                <img class="hero__bg-img" src="/img/banner-about.png">
+            </div>
+            <div class="hero__content">
+                <h1 class="hidden" aria-hidden="true">Good vibes</h1>
+                <p class="hero__title">
+                    О нас и нашей мастерской
+                </p>
+                <p class="hero__text">
+                    Наша специализация — изготовление качественных и привлекательных вывесок, которые станут мощным инструментом для привлечения новых клиентов, и узнаваемости вашего бренда.
+                </p>
+            </div>
+        </section>
+        <section class="container container_small info-block__wrapper">
+            <div class="info-block__media">
+                <img class="info-block__media-cover" src="/img/about_me.png">
+            </div>
+            <article class="info-block">
+                <p class="info-block__title">Меня зовут Владислав Богородов</p>
+                <div>
+                    <p class="info-block__text">Я основатель и главный мастер.</p>
+                    <p class="info-block__text">Моя команда — профессионалы с большим опытом работы:</p>
+                    <ul class="info-block__list">
+                        <li class="info-block__list-item">монтажник,</li>
+                        <li class="info-block__list-item">фрезеровщик,</li>
+                        <li class="info-block__list-item">маркетолог,</li>
+                        <li class="info-block__list-item">дизайнер,</li>
+                        <li class="info-block__list-item">макетчик по сборке вывесок,</li>
+                        <li class="info-block__list-item">технический специалист.</li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+        <section class="container container_small info-block__wrapper">
+            <article class="info-block">
+                <p class="info-block__title">Наша цель — помогать бизнесу развиваться</p>
+                <div>
+                    <p class="info-block__text">Мы создаем вывески, которые отражают концепцию вашего бизнеса.</p>
+                    <p class="info-block__text">Наше производство оснащено последними технологиями, что гарантирует высокое качество изготовления всех рекламных материалов.</p>
+                </div>
+                <button class="button-primary button_small info-block__button">Наши работы</button>
+            </article>
+            <div class="info-block__media">
+                <img class="info-block__media-cover" src="/img/about_business.png">
+            </div>
+        </section>
+        <section class="container slider">
+            <h2 class="section-title">Отзывы наших клиентов</h2>
+            <ul class="slider__list">
+                <% data.forEach(function(item, index){ %>
+                    <li class="slider__list-item">
+                        <article class="slider__card">
+                            <img class="slider-card__img" src="<%= item.images?.[0]?.content %>">
+                        </article>
+                    </li>
+                <% }); %>
+            </ul>
+            <div class="slider__navigation">
+                <button class="button-primary">&leftarrow;</button>
+                <button class="button-primary">&rightarrow;</button>
+            </div>
+        </section>
+        <section class="container postcard__wrapper">
+            <article class="postcard">
+                <div class="postcard__content">
+                    <img class="postcard__img" src="/img/postcard_about_img.png">
+                    <p class="postcard__title">
+                        Хотите привлечь внимание клиентов и выделиться среди конкурентов?
+                    </p>
+                    <button class="button-primary">Связаться с нами</button>
+                </div>
+            </article>
+        </section>
+    </main>
+    <%- include('partials/footer'); %>
+</body>
+</html>

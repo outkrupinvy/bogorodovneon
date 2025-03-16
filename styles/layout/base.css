@@ -1,0 +1,31 @@
+body {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    font: 400 var(--text-font-m);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: var(--container-padding-block);
+}
+
+.container {
+    position: relative;
+    max-width: 1200px;
+    width: 100%;
+    padding: var(--container-padding-block) var(--container-padding-inline);
+    margin: 0 auto;
+}
+
+.container_small {
+    max-width: 960px;
+}
+
+.hidden {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+} 

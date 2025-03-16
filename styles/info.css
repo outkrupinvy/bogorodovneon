@@ -1,0 +1,18 @@
+.subnavigation {
+    padding-bottom: 0;
+}
+/* --------------- DELIVERY -------------- */
+
+@media screen and (min-width: 601px) {
+    .delivery__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .delivery__grid .advanced-grid__item {
+        grid-column: auto;
+    }
+    
+    .delivery__grid .advanced-grid__item_span-h {
+        grid-column: span 2;
+    }
+}

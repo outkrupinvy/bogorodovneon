@@ -1,0 +1,126 @@
+.header {
+    display: flex;
+    align-items: center;
+    padding-block: 24px;
+}
+
+.header__logo {
+    position: relative;
+    display: inline-block;
+    flex: 0 0 40px;
+    width: 40px;
+    height: 40px;
+}
+
+.header-logo__img {
+    position: absolute;
+    top: -24px;
+    left: -60px;
+    max-width: 161px;
+}
+
+.header__nav, .header__contacts {
+    display: inline-flex;
+    align-items: center;
+}
+
+.header__nav {
+    margin-inline: auto;
+}
+
+.header__contacts {
+    flex: 0 0 auto;
+    gap: 16px
+}
+
+.header__nav-list {
+    display: inline-flex;
+    gap: 26px;
+    list-style-type: none;
+}
+
+.header__nav-link {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    color: inherit;
+    transition: color .3s;
+}
+
+.header__nav-link:hover {
+    color: var(--accent-color-hover);
+}
+
+.header__nav-link_active, .header__nav-link:active {
+    color: #F077EB;
+}
+
+.header__nav-link::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    bottom: -8px;
+    right: -8px;
+}
+
+.header-contacts__icon-item {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+}
+
+.header-contacts__button-item {
+    margin-left: 16px;
+}
+
+.header-contacts__icon-item:first-child {
+    margin-left: 8px;
+}
+
+.header-contacts__icon-item:last-child {
+    margin-right: 8px;
+}
+
+.header__burger {
+    display: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .header__contacts {
+        display: none;
+    }
+    .header-logo__img {
+        left: -51px;
+        max-width: 138px;
+    }
+    .header:not(.admin-header) .header__nav {
+        position: relative;
+        flex: 0 0 auto;
+        margin-left: 10px;
+    }
+    .header:not(.admin-header) .header__nav-list {
+        position: absolute;
+        top: 42px;
+        left: 0;
+        z-index: 1;
+        display: none;
+        padding: 12px;
+        border: 1px solid var(--main-text-color);
+        border-radius: var(--card-radius);
+        background-color: var(--main-bg-color);
+    }
+    .header:not(.admin-header) .header__nav-list_open {
+        display: inline-flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    .header__burger {
+        display: inline-flex;
+    }
+    .header__burger::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+    }
+}

@@ -1,0 +1,74 @@
+.button-primary,
+input.button-primary {
+    display: inline-block;
+    background-color: #fff;
+    padding: 11px 23px;
+    font: 400 var(--text-font-l);
+    color: var(--alt-text-color);
+    border-radius: var(--radius-round);
+    transition: all .3s;
+    text-align: center;
+}
+
+.button-secondary {
+    display: inline-block;
+    padding: 12px 40px;
+    font: 400 var(--text-font-l);
+    color: var(--main-text-color);
+    border: 1px solid var(--main-text-color);
+    border-radius: var(--radius-round);
+    transition: all .3s;
+    text-align: center;
+}
+
+.button_small {
+    padding: 8px 20px;
+    font: 400 var(--text-font-m);
+}
+
+.button-iconed {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--main-text-color);
+    border: 1px solid var(--main-text-color);
+    border-radius: 8px;
+    transition: all .3s;
+}
+
+.button-iconed::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.button-iconed svg {
+    width: 16px;
+    height: 16px;
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.button-iconed:hover {
+    color: var(--main-text-color);
+    border-color: var(--accent-button-color-hover);
+    background-color: var(--accent-button-color-hover);
+}
+
+@media screen and (max-width: 1024px) {
+    .button-primary,
+    .button-secondary {
+        font: 400 var(--text-font-m);
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .button-primary,
+    .button-secondary,
+    .button-iconed  {
+        width: 100%;
+    }
+}

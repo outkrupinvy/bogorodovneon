@@ -1,0 +1,71 @@
+:root {
+    /* colors */
+    --main-bg-color: #161616;
+    --main-text-color: #fff;
+    --alt-text-color: #161616;
+
+    --accent-color: #E000D7;
+    --accent-color-hover: #fd9ffa;
+    --accent-button-color-hover: #E601C9;
+
+    /* spacing */
+    --container-padding-inline: 16px;
+    --container-padding-block: 120px;
+    --card-padding: 60px 40px;
+    --button-padding: 20px 40px;
+
+    --container-max-width: 1440px;
+
+    /* lineheight */
+
+    --text-line-height-s: calc(22 / 14);
+    --text-line-height-m: calc(22 / 16);
+    --text-line-height-l: 1;
+
+    --title-line-height-s: calc(22 / 14);
+    --title-line-height-m: calc(32 / 24);
+    --title-line-height-l: calc(48 / 40);
+    --title-line-height-xl: 1;
+
+    /* Font */
+    --text-font-family: 'Rubik', sans-serif;
+
+    --text-font-s: 14px/var(--text-line-height-s) var(--text-font-family);
+    --text-font-m: 16px/var(--text-line-height-m) var(--text-font-family);
+    --text-font-l: 24px/var(--text-line-height-l) var(--text-font-family);
+
+    --title-font-s: 500 14px/var(--title-line-height-s) var(--text-font-family);
+    --title-font-m: 500 24px/var(--title-line-height-m) var(--text-font-family);
+    --title-font-l: 500 40px/var(--title-line-height-l) var(--text-font-family);
+    --title-font-xl: 500 80px/var(--title-line-height-xl) var(--text-font-family);
+
+    /* radius */
+    --radius-round: 100px;
+    --card-radius: 24px;
+}
+
+@media screen and (max-width: 1024px) {
+    :root {
+        --card-radius: 16px;
+
+        --title-font-m: 500 18px/var(--title-line-height-m) var(--text-font-family);
+        --title-font-l: 500 20px/var(--title-line-height-l) var(--text-font-family);
+        --title-font-xl: 500 24px/var(--title-line-height-xl) var(--text-font-family);
+
+        --container-padding-block: 60px;
+        --card-padding: 40px 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --card-radius: 16px;
+
+        --title-font-m: 500 18px/var(--title-line-height-m) var(--text-font-family);
+        --title-font-l: 500 20px/var(--title-line-height-l) var(--text-font-family);
+        --title-font-xl: 500 24px/var(--title-line-height-xl) var(--text-font-family);
+
+        --container-padding-block: 40px;
+        --card-padding: 32px 16px;
+    }
+}

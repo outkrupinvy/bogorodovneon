@@ -1,0 +1,136 @@
+.footer {
+    padding-block: var(--container-padding-block);
+    background-color: #fff;
+    color: var(--alt-text-color);
+}
+
+.footer_dark {
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+}
+
+.footer__logo {
+    grid-area: logo;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    color: inherit;
+}
+
+.footer__content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px 0;
+    padding-top: 0;
+    grid-template-areas:
+        "logo logo service-title service-title service-title client-title client-title company-title company-title contact-title contact-title contact-title"
+        "logo logo service-text service-text service-text client-text client-text company-text company-text contact-text contact-text contact-text"
+        "logo logo service-text service-text service-text client-text client-text company-text company-text contact-icons contact-icons contact-icons";
+}
+
+.footer__column-title {
+    font: var(--title-font-s);
+    margin-bottom: 16px;
+}
+
+.footer__column-title.service {
+    grid-area: service-title;
+}
+
+.footer__column-title.client {
+    grid-area: client-title;
+}
+
+.footer__column-title.company {
+    grid-area: company-title;
+}
+
+.footer__column-title.contact {
+    grid-area: contact-title;
+}
+
+.footer__column-text.service {
+    grid-area: service-text;
+}
+
+.footer__column-text.client {
+    grid-area: client-text;
+}
+
+.footer__column-text.company {
+    grid-area: company-text;
+}
+
+.footer__column-text.contact {
+    grid-area: contact-text;
+}
+
+.footer__column-icons.contact {
+    grid-area: contact-icons;
+}
+
+.footer__column-link {
+    font: var(--text-font-s);
+    margin-bottom: 8px;
+    color: inherit;
+    transition: all .3s;
+}
+
+.footer__column-icons {
+    position: relative;
+    display: flex;
+    gap: 20px;
+}
+.footer__column-icons .footer__column-link::after {
+    position: absolute;
+    inset: -10px;
+}
+
+.footer__column-link:hover,
+.footer__column-link:active,
+.footer__column-link:focus {
+    color: #fd9ffa;
+}
+
+.footer__column-date {
+    font: var(--text-font-s);
+    color: #8A8A8A;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer__content {
+        grid-template-columns: repeat(8, 1fr);
+        grid-template-areas:
+            "logo logo client-title client-title client-title service-title service-title service-title"
+            "logo logo client-text client-text client-text service-text service-text service-text"
+            "logo logo company-title company-title company-title contact-title contact-title contact-title"
+            "logo logo company-text company-text company-text contact-text contact-text contact-text"
+            "logo logo company-text company-text company-text contact-icons contact-icons contact-icons";
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .footer__column-title.contact {
+        display: none;
+    }
+    .footer__column-title {
+        margin-bottom: -8px;
+    }
+    .footer__column-icons.contact {
+        display: grid;
+        grid-template-columns: repeat(2, 24px);
+        grid-template-rows: repeat(2, 24px);
+        gap: 32px;
+        margin-top: 0;
+    }
+    .footer__content {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas:
+            "logo logo contact-icons contact-icons"
+            "contact-text contact-text contact-icons contact-icons"
+            "service-title service-title service-title service-title"
+            "service-text service-text service-text service-text"
+            "company-title company-title client-title client-title"
+            "company-text company-text client-text client-text"
+    }
+}
